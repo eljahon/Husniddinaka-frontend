@@ -5,11 +5,11 @@ import AppMenuItem from './AppMenuItem.vue';
 
 const model = ref([
     {
-        label: 'Home',
+        // label: 'Home',
         items: [{ label: 'Dashboard', icon: 'pi pi-fw pi-home', to: '/' }]
     },
     {
-        label: 'UI Components',
+        // label: 'UI Components',
         items: [
             { label: 'Form Layout', icon: 'pi pi-fw pi-id-card', to: '/uikit/formlayout' },
             { label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/uikit/input' },
@@ -30,23 +30,23 @@ const model = ref([
         ]
     },
     {
-        label: 'Prime Blocks',
+        // label: 'Prime Blocks',
         items: [
             { label: 'Free Blocks', icon: 'pi pi-fw pi-eye', to: '/blocks', badge: 'NEW' },
             { label: 'All Blocks', icon: 'pi pi-fw pi-globe', url: 'https://www.primefaces.org/primeblocks-vue', target: '_blank' }
         ]
     },
     {
-        label: 'Utilities',
+        // label: 'Utilities',
         items: [
             { label: 'PrimeIcons', icon: 'pi pi-fw pi-prime', to: '/utilities/icons' },
             { label: 'PrimeFlex', icon: 'pi pi-fw pi-desktop', url: 'https://www.primefaces.org/primeflex/', target: '_blank' }
         ]
     },
     {
-        label: 'Pages',
-        icon: 'pi pi-fw pi-briefcase',
-        to: '/pages',
+        // label: 'Pages',
+        // icon: 'pi pi-fw pi-briefcase',
+        // to: '/pages',
         items: [
             {
                 label: 'Landing',
@@ -97,7 +97,7 @@ const model = ref([
         ]
     },
     {
-        label: 'Hierarchy',
+        // label: 'Hierarchy',
         items: [
             {
                 label: 'Submenu 1',
@@ -141,7 +141,7 @@ const model = ref([
         ]
     },
     {
-        label: 'Get Started',
+        // label: 'Get Started',
         items: [
             {
                 label: 'Documentation',
@@ -176,11 +176,6 @@ const model = ref([
             <app-menu-item v-if="!item.separator" :item="item" :index="i"></app-menu-item>
             <li v-if="item.separator" class="menu-separator"></li>
         </template>
-        <li>
-            <a href="https://www.primefaces.org/primeblocks-vue/#/" target="_blank">
-                <img src="/layout/images/banner-primeblocks.png" alt="Prime Blocks" class="w-full mt-3" />
-            </a>
-        </li>
     </ul>
 </template>
 
