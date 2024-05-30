@@ -135,12 +135,12 @@ const router = createRouter({
                     path: '/pages/crud',
                     name: 'crud',
                     component: () => import('@/views/pages/Crud.vue')
-                },
-                {
-                    path: '/documentation',
-                    name: 'documentation',
-                    component: () => import('@/views/utilities/Documentation.vue')
                 }
+                // {
+                //     path: '/documentation',
+                //     name: 'documentation',
+                //     component: () => import('@/views/utilities/Documentation.vue')
+                // }
             ]
         },
         {
@@ -157,7 +157,8 @@ const router = createRouter({
         {
             path: '/auth/login',
             name: 'login',
-            component: () => import('@/views/pages/auth/Login.vue')
+            component: () => import('@/views/pages/auth/Login.vue'),
+            meta: { redirectIfLoggedIn: true }
         },
         {
             path: '/auth/access',
@@ -171,5 +172,40 @@ const router = createRouter({
         }
     ]
 });
+// const isUserLoggedIn = () => !!(localStorage.getItem('userData') && localStorage.getItem('accessToken'));
+const isUserLoggedIn = false;
 
+const roleAccessChek = () => false;
+// eslint-disable-next-line no-unused-vars
+// const nextGourd = (to, from, next) => {
+//     console.log('to', to, 'from', from, to.meta.redirectIfLoggedIn,!isUserLoggedIn);
+//     if (to.meta.redirectIfLoggedIn && !isUserLoggedIn) return next();
+//     if (to.meta.redirectIfLoggedIn && !isUserLoggedIn) {
+//         return next('/dashboard')
+//     };
+//     // else if(!isUserLoggedIn() && canNavigate(to)) {
+//     //
+//     //     localStorage.clear()
+//     //
+//     //     return next('/login')
+//     //
+//     // }
+//     // else if(isUserLoggedIn() && canNavigate(to)) {
+//     //
+//     //     return  next()
+//     //
+//     // }
+//     // else if(isUserLoggedIn() && !canNavigate(to)) {
+//     //
+//     //     if(isUserLoggedIn() && to.path === '/') return next('/dashboards/crm')
+//     //
+//     //     if(!isUserLoggedIn() && to.path === '/') return next('/login')
+//     //
+//     //     return  next("/not-authorized")
+//     //
+//     // }
+//     if (!isUserLoggedIn && !roleAccessChek(to)) return next('/auth/login');
+//     else return next();
+// };
+// router.beforeEach(nextGourd);
 export default router;

@@ -2,6 +2,7 @@
 import { ref, computed, onMounted, onBeforeUnmount } from 'vue';
 import { useLayout } from '@/layout/composables/layout';
 import { useRouter } from 'vue-router';
+import Logo from '@/components/Logo.vue'
 
 const { layoutConfig, onMenuToggle } = useLayout();
 
@@ -65,9 +66,10 @@ const isOutsideClicked = (event) => {
         <router-link to="/" class="layout-topbar-logo">
 <!--            <img :src="logoUrl" alt="logo" />-->
 <!--            <span>SAKAI</span>-->
+          <Logo/>
         </router-link>
 
-        <button class="p-link layout-menu-button layout-topbar-button" @click="onMenuToggle()">
+        <button class="p-link layout-topbar-button" @click="onMenuToggle()">
             <i class="pi pi-bars"></i>
         </button>
 

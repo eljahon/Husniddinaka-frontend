@@ -1,16 +1,44 @@
 <script setup>
 import { useLayout } from '@/layout/composables/layout';
-import { ref, computed } from 'vue';
-import AppConfig from '@/layout/AppConfig.vue';
+import { ref, computed, reactive } from "vue";
+// import AppConfig from '@/layout/AppConfig.vue';
 
 const { layoutConfig } = useLayout();
 const email = ref('');
 const password = ref('');
+const loading = ref(false)
+const _form = reactive({
+  email: '',
+  password: ''
+})
 const checked = ref(false);
+const isCheck = ref({})
 
 const logoUrl = computed(() => {
     return `/layout/images/${layoutConfig.darkTheme.value ? 'logo-white' : 'logo-dark'}.svg`;
 });
+
+const isChechValidation= () =>  {
+  let set ={}
+  for(let key in _form) {
+    console.log(!_form[key],_form[key]);
+      if(!_form[key]) set[key] = true;
+      if(_form[key]) set[key] = false;
+  }
+  isCheck.value = set;
+  console.log(set);
+
+  return Object.values(set).find(el => !el)
+}
+
+function onSubmit () {
+  loading.value = true
+  const isValid = isChechValidation();
+  console.log(isValid);
+  if(isValid){}
+
+  loading.value = false
+}
 </script>
 
 <template>
@@ -27,10 +55,10 @@ const logoUrl = computed(() => {
 
                     <div>
                         <label for="email1" class="block text-900 text-xl font-medium mb-2">Email</label>
-                        <InputText id="email1" type="text" placeholder="Email address" class="w-full md:w-30rem mb-5" style="padding: 1rem" v-model="email" />
+                        <InputText id="email1" type="text" placeholder="Email address" class="w-full md:w-30rem mb-5" style="padding: 1rem" v-model="_form.email" :invalid="isCheck?.email"/>
 
                         <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                        <Password id="password1" v-model="password" placeholder="Password" :toggleMask="true" class="w-full mb-3" inputClass="w-full" :inputStyle="{ padding: '1rem' }"></Password>
+                        <Password id="password1" v-model="_form.password" placeholder="Password" :toggleMask="true" class="w-full mb-3" inputClass="w-full" :invalid="isCheck?.password" :inputStyle="{ padding: '1rem' }"></Password>
 
                         <div class="flex align-items-center justify-content-between mb-5 gap-5">
                             <div class="flex align-items-center">
@@ -39,13 +67,13 @@ const logoUrl = computed(() => {
                             </div>
                             <a class="font-medium no-underline ml-2 text-right cursor-pointer" style="color: var(--primary-color)">Forgot password?</a>
                         </div>
-                        <Button label="Sign In" class="w-full p-3 text-xl"></Button>
+                        <Button @click="onSubmit"  :loading="loading" label="Sign In" aria-label="Submit" class="w-full p-3 text-xl" iconPos="right"></Button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <AppConfig simple />
+<!--    <AppConfig simple />-->
 </template>
 
 <style scoped>

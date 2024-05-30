@@ -1,6 +1,6 @@
 .layout-sidebar {
     position: fixed;
-    width: 300px;
+    width: 270px;
     height: calc(100vh - 9rem);
     z-index: 999;
     overflow-y: auto;
@@ -15,6 +15,8 @@
 }
 
 .layout-menu {
+    //background: red;
+    height: calc(100vh - 14rem);
     margin: 0;
     padding: 0;
     list-style-type: none;
