@@ -5,6 +5,8 @@ import AppFooter from './AppFooter.vue';
 import AppSidebar from './AppSidebar.vue';
 import AppConfig from './AppConfig.vue';
 import { useLayout } from '@/layout/composables/layout';
+import { useRouter } from "vue-router";
+// import Button from "@/views/uikit/Button.vue";
 
 const { layoutConfig, layoutState, isSidebarActive } = useLayout();
 
@@ -54,6 +56,11 @@ const isOutsideClicked = (event) => {
 
     return !(sidebarEl.isSameNode(event.target) || sidebarEl.contains(event.target) || topbarEl.isSameNode(event.target) || topbarEl.contains(event.target));
 };
+const router = useRouter()
+const Logout = () => {
+  localStorage.removeItem('token');
+  router.push('/auth/login')
+}
 </script>
 
 <template>
@@ -61,8 +68,14 @@ const isOutsideClicked = (event) => {
         <app-topbar></app-topbar>
         <div class="layout-sidebar">
             <app-sidebar></app-sidebar>
-          <span>logout</span>
+
+          <div>
+<!--            <button>logout</button>-->
+            <Button @click="Logout" icon='pi pi-fw pi-sign-out' label="Logout" severity="warning" text class="mb-2 mr-2" />
+          </div>
         </div>
+
+
         <div class="layout-main-container">
             <div class="layout-main">
                 <router-view></router-view>

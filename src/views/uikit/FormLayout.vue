@@ -1,12 +1,13 @@
 <script setup>
 import { ref } from 'vue';
+import { useStore } from "vuex";
 
 const dropdownItems = ref([
     { name: 'Option 1', code: 'Option 1' },
     { name: 'Option 2', code: 'Option 2' },
     { name: 'Option 3', code: 'Option 3' }
 ]);
-
+const store = useStore()
 const dropdownItem = ref(null);
 </script>
 
@@ -14,6 +15,7 @@ const dropdownItem = ref(null);
     <div class="grid">
         <div class="col-12 md:col-6">
             <div class="card p-fluid">
+              <h3>{{store.state.isLogined}}</h3>
                 <h5>Vertical</h5>
                 <div class="field">
                     <label for="name1">Name</label>

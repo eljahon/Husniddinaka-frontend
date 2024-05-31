@@ -1,4 +1,8 @@
 import { createStore } from 'vuex';
+import { Auth } from "@/store/auth";
+import { Orders } from '@/store/orders';
+import {CorportativeCarts} from "@/store/corportative-carts";
+import {Subscribers} from "@/store/subscribers";
 
 const store = createStore({
     state() {
@@ -17,7 +21,12 @@ const store = createStore({
             commit('SET_IS_LOGINED', payload);
         }
     },
-    modules: {}
+    modules: {
+        Auth,
+        Orders,
+        CorportativeCarts,
+        Subscribers
+    }
 });
 
 export default store;

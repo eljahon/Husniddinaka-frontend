@@ -4,20 +4,26 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "vite preview",
+        "build:prod": "NODE_ENV=production vite build --mode production",
+        "build:dev": "NODE_ENV=development vite build --mode development",
+        "preview:prod": "NODE_ENV=production vite preview --mode productionv",
+        "preview:dev": "NODE_ENV=development vite preview --mode development",
         "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs --fix --ignore-path .gitignore"
     },
     "dependencies": {
+        "axios": "^1.7.2",
         "chart.js": "3.3.2",
         "primeflex": "^3.3.1",
         "primeicons": "^6.0.1",
         "primevue": "3.49.1",
         "vue": "^3.2.41",
+        "vue-i18n": "^9.8.0",
         "vue-router": "^4.1.5",
         "vuex": "^4.0.2"
     },
     "devDependencies": {
         "@rushstack/eslint-patch": "^1.1.4",
+        "@intlify/unplugin-vue-i18n": "^2.0.0",
         "@vitejs/plugin-vue": "^4.1.0",
         "@vue/eslint-config-prettier": "^7.0.0",
         "eslint": "^8.22.0",

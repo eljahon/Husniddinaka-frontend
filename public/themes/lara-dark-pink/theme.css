@@ -9076,7 +9076,7 @@
   }
   .p-inline-message.p-inline-message-success {
     background: rgba(16, 185, 129, 0.2);
-    border: solid #10b981;
+    border: solid #ed7117;
     border-width: 1px;
     color: #6ee7b7;
   }
@@ -9216,7 +9216,7 @@
   }
   .p-message.p-message-success {
     background: rgba(16, 185, 129, 0.2);
-    border: solid #10b981;
+    border: solid #ed7117;
     border-width: 0 0 0 6px;
     color: #6ee7b7;
   }
@@ -9416,7 +9416,7 @@
   }
   .p-toast .p-toast-message.p-toast-message-success {
     background: rgba(16, 185, 129, 0.2);
-    border: solid #10b981;
+    border: solid #ed7117;
     border-width: 0 0 0 6px;
     color: #6ee7b7;
   }
