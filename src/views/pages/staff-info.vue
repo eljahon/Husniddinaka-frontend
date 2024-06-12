@@ -83,6 +83,12 @@ function confirmDeleteProduct(data) {
 function editProduct(data) {
     router.push({ name: 'staff-create', params: { id: data.id } });
 }
+function deleteItem (data) {
+  store.dispatch('deleteCorpotative', data.id)
+    .then(res => {
+      getCorporatives()
+    })
+}
 let  search = (value) => {
   if(value) routerPush({search: value});
   else routerPush({search: undefined})
@@ -96,9 +102,9 @@ let  search = (value) => {
             <TheBreadcrumb />
             <div class="flex justify-content-between m-2">
                 <div class="flex gap-1">
-                    <InputText :placeholder="$t('search')" v-model="_filters.search" @update:model-value="search"/>
-                    <Dropdown v-model="_filters.marita" :options="maritaList" optionLabel="name" optionValue="value" :placeholder="$t('marital_status')" />
-                    <Dropdown v-model="_filters.technical" :options="techList" optionLabel="name" optionValue="value" :placeholder="$t('technical_language_id')" />
+                    <InputText :placeholder="$t('search-phone-number')" v-model="_filters.search" @update:model-value="search"/>
+<!--                    <Dropdown v-model="_filters.marita" :options="maritaList" optionLabel="name" optionValue="value" :placeholder="$t('marital_status')" />-->
+<!--                    <Dropdown v-model="_filters.technical" :options="techList" optionLabel="name" optionValue="value" :placeholder="$t('technical_language_id')" />-->
                 </div>
                 <Button :label="$t('new-create')" class="m-2" severity="success" @click="router.push({ name: 'staff-create', params: { id: 'new' } })" />
             </div>
@@ -160,7 +166,7 @@ let  search = (value) => {
                     <Column headerStyle="min-width:10rem;" :header="$t('action')">
                         <template #body="{ data }">
                             <Button icon="pi pi-pencil" class="mr-2" severity="success" rounded @click="editProduct(data)" />
-                            <Button icon="pi pi-trash" class="mt-2" severity="warning" rounded @click="confirmDeleteProduct(data)" />
+                            <Button icon="pi pi-trash" class="mt-2" severity="warning" rounded @click="deleteItem(data)" />
                         </template>
                     </Column>
                 </DataTable>
