@@ -2,7 +2,8 @@
 import { ref } from 'vue';
 
 import AppMenuItem from './AppMenuItem.vue';
-
+import { useI18n } from "vue-i18n";
+const { t } = useI18n();
 const model = ref([
     {
         // label: 'Home',
@@ -11,10 +12,10 @@ const model = ref([
     {
         // label: 'UI Components',
         items: [
-            { label: 'Corporative Carts', icon: 'pi pi-fw pi-credit-card', to: '/corporative-carts' },
-            { label: 'Orders', icon: 'pi pi-fw pi-id-card', to: '/orders' },
-            { label: 'Subscribers', icon: 'pi pi-fw pi-id-card', to: '/subscribers' },
-            { label: 'Settings', icon: 'pi pi-fw pi-cog', to: '/settings' },
+            { label: t('staff-info'), icon: 'pi pi-fw pi-users', to: '/staff-info' },
+            { label: t('technical'), icon: 'pi pi-fw pi-id-card', to: '/technical' },
+            // { label: t('subscribers'), icon: 'pi pi-fw pi-id-card', to: '/subscribers' },
+            // { label: t('settings'), icon: 'pi pi-fw pi-cog', to: '/settings' },
             // { label: 'Input', icon: 'pi pi-fw pi-check-square', to: '/uikit/input' },
             // { label: 'Float Label', icon: 'pi pi-fw pi-bookmark', to: '/uikit/floatlabel' },
             // { label: 'Invalid State', icon: 'pi pi-fw pi-exclamation-circle', to: '/uikit/invalidstate' },

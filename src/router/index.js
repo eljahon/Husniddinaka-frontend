@@ -11,27 +11,32 @@ const router = createRouter({
                 {
                     path: '/',
                     name: 'dashboard',
-                    component: () => import('@/views/pages/dashboard.vue')
+                    component: () => import('@/views/pages/dashboard/dashboard.vue')
                 },
                 {
                     path: '/settings',
                     name: 'settings',
-                    component: () => import('@/views/pages/settings.vue')
+                    component: () => import('@/views/pages/setting/settings.vue')
                 },
                 {
-                    path: '/corporative-carts',
-                    name: 'CorporativeCarts',
-                    component: () => import('@/views/pages/corporative-carts.vue')
+                    path: '/staff-info',
+                    name: 'staff-info',
+                    component: () => import('@/views/pages/staff-info.vue')
                 },
                 {
-                    path: '/orders',
-                    name: 'orders',
-                    component: () => import('@/views/pages/orders.vue')
+                    path: '/staff-create/:id',
+                    name: 'staff-create',
+                    component: () => import('@/views/pages/staff-create.vue')
                 },
                 {
-                    path: '/subscribers',
-                    name: 'subscribers',
-                    component: () => import('@/views/pages/subscribers.vue')
+                    path: '/technical',
+                    name: 'technical',
+                    component: () => import('@/views/pages/technalic-list.vue')
+                },
+                {
+                    path: '/technical-create/:id',
+                    name: 'technical-create',
+                    component: () => import('@/views/pages/technalic-form.vue')
                 }
             ]
         },
@@ -50,8 +55,6 @@ const router = createRouter({
 
 
 const nextGourd = (to, from, next) => {
-    console.log(to, 'to');
-    console.log(from, 'from');
     const isUserLoggedIn = !!localStorage.getItem('token');
     if (to.path === '/auth/login' && isUserLoggedIn) return next('/');
 

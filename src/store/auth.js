@@ -14,9 +14,9 @@ export const Auth = {
         Login({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .post('/auth/local', { ...payload })
+                    .post('/auth/login', { ...payload })
                     .then((res) => {
-                        if(res.jwt) localStorage.setItem('token', res.jwt)
+                        if(res.token) localStorage.setItem('token', res.token)
                         resolve(res);
                     })
                     .catch((err) => {

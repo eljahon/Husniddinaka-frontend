@@ -6,6 +6,10 @@ let config = {
 };
 
 const request = axios.create(config);
+function showToast(severity, summary, detail) {
+    const toast = useToast();
+    toast.add({ severity, summary, detail, life: 3000 });
+}
 request.interceptors.request.use(function (config) {
     if (localStorage.getItem('token')) {
         config.headers = {
@@ -25,9 +29,8 @@ request.interceptors.response.use(
             message,
             response: { status }
         } = error;
-        console.log(message, status);
-
-        useToast().add({ severity: 'error', summary: 'Error Message', detail: message+"" + status, life: 3000 });
+        showToast('error', 'Error Message',message+"" + status,)
+        // useToast().add({ severity: '', summary: , detail: , life: 3000 });
         return Promise.reject(error);
     }
 );

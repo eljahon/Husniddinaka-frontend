@@ -1,4 +1,26 @@
 {
   "save":"Saved",
-  "submit": "Submit"
+  "submit": "Submit",
+  "corporative-carts": "Corporative-Carts",
+  "orders": "Orders",
+  "order": "Order",
+  "subscribers": "Subscribers",
+  "settings": "Settings",
+  "company-name": "Company-name",
+  "company-phone": "Company-phone",
+  "vendor-name": "Vendor-name",
+  "vendor-phone": "Vendor-phone",
+  "limit": "Limit",
+  "active": "Active",
+  "in-active": "In-Active",
+  "closed": "Closed",
+  "action": "Action",
+  "date": "Date",
+  "status": "Status",
+  "all": "All",
+  "vendor": "Vendor",
+  "vendors": "Vendors",
+  "staff-infor-logo": "Staff Info",
+  "user-full-name": "User-full-name",
+  "dateOfBirth": "date-birth"
 }

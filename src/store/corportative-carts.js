@@ -1,5 +1,6 @@
 import request from '@/utils/request';
-
+const sub_url = '/users';
+const tech_url = '/technical-languages'
 export const CorportativeCarts = {
     state: () => ({
         orders: undefined,
@@ -18,9 +19,23 @@ export const CorportativeCarts = {
         getCorpotatives({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .get('/corporative-cart/users/items')
+                    .get(sub_url, {params:{...payload}})
                     .then((res) => {
                         commit('SET_ORDERS', payload);
+                        resolve(res);
+                    })
+                    .catch((err) => {
+                        commit('SET_ORDERS', []);
+                        reject(err);
+                    });
+            });
+        },
+        getTechList({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                request
+                    .get(tech_url, {params:{...payload}})
+                    .then((res) => {
+                        // commit('SET_ORDERS', payload);
                         resolve(res);
                     })
                     .catch((err) => {
@@ -32,7 +47,21 @@ export const CorportativeCarts = {
         getCorpotative({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .get(`/corporative-cart/users/items/${payload}`)
+                    .get(`${sub_url}/${payload}`)
+                    .then((res) => {
+                        commit('SET_ORDER', payload);
+                        resolve(res);
+                    })
+                    .catch((err) => {
+                        commit('SET_ORDERS', []);
+                        reject(err);
+                    });
+            });
+        },
+        getTechListItem({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                request
+                    .get(`${tech_url}/${payload}`)
                     .then((res) => {
                         commit('SET_ORDER', payload);
                         resolve(res);
@@ -47,7 +76,19 @@ export const CorportativeCarts = {
         postCorpotative({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .post('/orders', { ...payload })
+                    .post(sub_url, { ...payload })
+                    .then((res) => {
+                        resolve(res);
+                    })
+                    .catch((err) => {
+                        reject(err);
+                    });
+            });
+        },
+        postTechList({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                request
+                    .post(tech_url, { ...payload })
                     .then((res) => {
                         resolve(res);
                     })
@@ -60,7 +101,19 @@ export const CorportativeCarts = {
         putCorpotative({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .put(`/orders/${payload.id}`, { ...payload.data })
+                    .put(`${sub_url}/${payload.id}`, { ...payload.data })
+                    .then((res) => {
+                        resolve(res);
+                    })
+                    .catch((err) => {
+                        reject(err);
+                    });
+            });
+        },
+        putTechList({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                request
+                    .put(`${tech_url}/${payload.id}`, { ...payload.data })
                     .then((res) => {
                         resolve(res);
                     })
@@ -73,7 +126,19 @@ export const CorportativeCarts = {
         deleteCorpotative({ commit }, payload) {
             return new Promise((resolve, reject) => {
                 request
-                    .delete(`/orders/${payload}`)
+                    .delete(`${sub_url}/${payload}`)
+                    .then((res) => {
+                        resolve(res);
+                    })
+                    .catch((err) => {
+                        reject(err);
+                    });
+            });
+        },
+        deleteTechList({ commit }, payload) {
+            return new Promise((resolve, reject) => {
+                request
+                    .delete(`${tech_url}/${payload}`)
                     .then((res) => {
                         resolve(res);
                     })
